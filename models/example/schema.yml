@@ -1,0 +1,37 @@
+
+version: 2
+
+models:
+    - name: raw_tbl_states
+      description: "Table with states information of scooter"
+      columns:
+        - name: vehicle_id
+          description: "Vehicle identifier"
+        - name: time_updated
+          description: "Timestamp of the record received on destination"
+        - name: city_name
+          description: "City name deployed in at that moment"
+        - name: country_name
+          description: "Country name deployed in at that moment"
+        - name: is_deployed
+          description: "If the vehicle deployed"
+        - name: is_in_warehouse
+          description: "If the vehicle in warehouse"
+        - name: is_broken
+          description: "If the vehicle broken"
+
+    - name: raw_tbl_telemetry
+      description: "Table with statistics of scooter"
+      columns:
+        - name: vehicle_id
+          description: "Vehicle identifier"
+        - name: time_updated
+          description: "Timestamp of the record received on destination"
+        - name: time_gps
+          description: "Timestamp of the vehicle GNSS module"
+        - name: is_charging
+          description: "If the vehicle is charging"
+        - name: battery_level
+          description: "Vehicle battery level"
+        - name: num_gps_satellites
+          description: "Number of GPS satellites received by the vehicle"
