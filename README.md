@@ -68,6 +68,7 @@ effective for daily loads, the files will have to be loaded incrementally. The l
 raw_tl_states_delta.sql & raw_tbl_telelmetry_delta.sql
 
 dbt run --models raw_tbl_states_delta --vars '{"START_TIME":"2021-01-01 00:00:00.0", "END_TIME":"2021-01-31 00:00:00.0"}'
+
 dbt run --models raw_tbl_telemetry_delta --vars '{"START_TIME":"2021-01-01 00:00:00.0", "END_TIME":"2021-01-31 00:00:00.0"}'
 
 # Loading data into Transformation Layer 
@@ -98,22 +99,36 @@ every time the scripts are run to manage incremental loads. These datasets have 
 
 # Final datasets-
 1. agg_vehicle_performance_metric_daily - Final daily dataset - loaded in incremental fashion to display the following-
+ 
       HASH_CODE    	            | VARCHAR(32)	    | Hash code to identify unique records
+      
       DATE_KEY	                | DATE	            | Calender date
+      
       CITY_NAME	                | VARCHAR(16777216)	| City name deployed in at that moment
+      
       COUNTRY_NAME	            | VARCHAR(16777216)	| Country name deployed in at that moment
+      
       VEHICLE_DEPLOYED_CNT	    | NUMBER(18,0)	    | Count of vehicles deployed
+      
       LOST_VEHICLE_CNT	        | NUMBER(18,0)	    | Count of vehicles lost
+      
       RUNNING_LOSS_PCT	        | NUMBER(28,2)	    | Running loss percentage from D-21 to D-7
+      
       LOW_BATTERY_VEHICLE_CNT	| NUMBER(18,0)	    | Count of vehicles with less than 20% battery level
 
 
 2. agg_vehicle_performance_metric_weekly - Final weekly dataset - loaded in incremental fashion to display the following-
+ 
       HASH_CODE    	            | VARCHAR(32)	    | Hash code to identify unique records
+      
       WEEk_END_DATE             | DATE	            | week ending day for calender date
+      
       CITY_NAME	                | VARCHAR(16777216)	| City name deployed in at that moment
+      
       COUNTRY_NAME	            | VARCHAR(16777216)	| Country name deployed in at that moment
+      
       VEHICLE_DEPLOYED_CNT	    | NUMBER(18,0)	    | Count of vehicles deployed
+      
       LOST_VEHICLE_CNT	        | NUMBER(18,0)	    | Count of vehicles lost
       
 # Modelling Approach-
