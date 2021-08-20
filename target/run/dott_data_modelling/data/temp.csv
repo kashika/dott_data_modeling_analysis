@@ -1,0 +1,8 @@
+
+    truncate table "DEMO_DB"."PUBLIC"."TEMP";
+    -- dbt seed --
+    
+            insert into DEMO_DB.PUBLIC.temp (vehicle_id, time_updated, hardware_generation, city_name, country_name, is_deployed, is_in_warehouse, is_broken) values
+            (%s,%s,%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s,%s,%s)
+        
+  

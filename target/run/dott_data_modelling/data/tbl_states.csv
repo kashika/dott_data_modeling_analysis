@@ -1,0 +1,7 @@
+
+    
+    create table DEMO_DB.PUBLIC.tbl_states (vehicle_id integer,time_updated integer,hardware_generation integer,city_name integer,country_name integer,is_deployed integer,is_in_warehouse integer,is_broken integer)
+  ;
+    -- dbt seed --
+    
+  
