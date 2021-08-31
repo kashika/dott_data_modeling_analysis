@@ -30,8 +30,8 @@ dbt run --models s_agg_vehicle_loss_weekly --vars '{"START_DATE":"2020-12-31", "
 
                     (SELECT vehicle_id, city_name, country_name, min(TO_DATE(SPLIT_PART(time_updated,' UTC',1))) as deploy_date
                      FROM DEMO_DB.PUBLIC.TRNS_TBL_STATES WHERE is_in_warehouse = 'FALSE' AND is_deployed = 'TRUE' AND is_broken = 'FALSE'
-                     AND TO_DATE(SPLIT_PART(time_updated,' UTC',1)) > '{{var("START_DATE")}}'
-                     AND TO_DATE(SPLIT_PART(time_updated,' UTC',1)) <= '{{var("END_DATE")}}'
+                     #AND TO_DATE(SPLIT_PART(time_updated,' UTC',1)) > '{{var("START_DATE")}}'
+                     #AND TO_DATE(SPLIT_PART(time_updated,' UTC',1)) <= '{{var("END_DATE")}}'
                      GROUP BY vehicle_id, city_name, country_name
                     ) b
                    ON a.all_dates>=b.deploy_date+7
