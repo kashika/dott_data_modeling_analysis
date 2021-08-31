@@ -33,14 +33,15 @@ dbt run --models s_agg_vehicle_loss_daily --vars '{"START_DATE":"2020-12-31", "E
                 WHERE is_in_warehouse = 'FALSE'
                 AND is_deployed = 'TRUE'
                 AND is_broken = 'FALSE'
-                AND TO_DATE(SPLIT_PART(time_updated,' UTC',1)) > '{{var("START_DATE")}}'
-                AND TO_DATE(SPLIT_PART(time_updated,' UTC',1)) <= '{{var("END_DATE")}}'
+                # commented this part because this is not required for this exercise
+                # AND TO_DATE(SPLIT_PART(time_updated,' UTC',1)) > '{{var("START_DATE")}}'
+                # AND TO_DATE(SPLIT_PART(time_updated,' UTC',1)) <= '{{var("END_DATE")}}'
 
                 GROUP BY vehicle_id,
                          city_name,
                          country_name
                ) b
-
+              # check if vehicles have been deployed for at leqst 7 days
               ON a.all_dates>=b.deploy_date+7
           ) c
       LEFT JOIN
