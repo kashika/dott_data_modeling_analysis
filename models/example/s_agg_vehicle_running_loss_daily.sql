@@ -34,8 +34,9 @@ dbt run --models s_agg_vehicle_running_loss_daily --vars '{"START_DATE":"2020-12
                      COUNT(DISTINCT vehicle_id) AS deployed_vehicle
                      FROM DEMO_DB.PUBLIC.TRNS_TBL_STATES
                      WHERE is_deployed='TRUE'
-                     AND TO_DATE(SPLIT_PART(time_updated,' UTC',1)) > '{{var("START_DATE")}}'
-                     AND TO_DATE(SPLIT_PART(time_updated,' UTC',1)) <= '{{var("END_DATE")}}'
+                     # commented this part as it is not required for this exercise
+                     #AND TO_DATE(SPLIT_PART(time_updated,' UTC',1)) > '{{var("START_DATE")}}'
+                     #AND TO_DATE(SPLIT_PART(time_updated,' UTC',1)) <= '{{var("END_DATE")}}'
                      GROUP BY TO_DATE(SPLIT_PART(time_updated,' UTC',1)),
                          city_name,
                          country_name
